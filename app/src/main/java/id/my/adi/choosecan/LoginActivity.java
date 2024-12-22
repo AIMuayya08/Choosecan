@@ -1,5 +1,6 @@
 package id.my.adi.choosecan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,8 +27,36 @@ import androidx.appcompat.app.AppCompatActivity;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
+            // Inisialisasi View
             initViews();
-            setListeners();
+
+            // Listener untuk tombol login
+            loginButton.setOnClickListener(v -> {
+                String username = usernameEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+
+                if (username.isEmpty() || password.isEmpty()) {
+                    // Tampilkan pesan error jika input kosong
+                    Toast.makeText(LoginActivity.this, "Username dan Password harus diisi!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Lakukan validasi login
+                    if (validateLogin(username, password)) {
+                        // Beralih ke StartActivity jika valid
+                        Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+                        startActivity(intent);
+                        finish(); // Tutup LoginActivity agar tidak bisa kembali ke layar login
+                    } else {
+                        // Tampilkan pesan error jika login gagal
+                        Toast.makeText(LoginActivity.this, "Username atau Password salah!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            // Listener untuk link register
+            registerTextView.setOnClickListener(v -> {
+                // Tambahkan logika untuk berpindah ke halaman register
+                Toast.makeText(LoginActivity.this, "Fitur register belum diimplementasikan!", Toast.LENGTH_SHORT).show();
+            });
         }
 
         private void initViews() {
@@ -36,22 +66,10 @@ import androidx.appcompat.app.AppCompatActivity;
             registerTextView = findViewById(R.id.register_text_view);
         }
 
-        private void setListeners() {
-            loginButton.setOnClickListener(v -> {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-                // Implement login logic here
-            });
-
-           // public void onRegisterClick(View view) {
-                // Arahkan pengguna ke halaman pendaftaran
-             //   Intent intent = new Intent(this, RegisterActivity.class); // Ganti RegisterActivity dengan kelas tujuan Anda
-            //    startActivity(intent);
-           // }
-
-
-            registerTextView.setOnClickListener(v -> {
-                // Implement navigation to registration screen
-            });
+        // Fungsi validasi login
+        private boolean validateLogin(String username, String password) {
+            // Tambahkan logika validasi di sini
+            // Contoh validasi sederhana: username = "user", password = "1234"
+            return username.equals("user") && password.equals("1234");
         }
     }
