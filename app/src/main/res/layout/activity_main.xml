@@ -8,84 +8,325 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <!-- FrameLayout utama -->
+    <!-- Background Image -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="2000px"
+        android:layout_height="match_parent"
         android:src="@drawable/main_background"
-        android:translationY="160dp"
-        android:alpha="0.2"
-        >
+        android:scaleType="centerCrop"
+        android:alpha="0.2" />
 
-    </ImageView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2000px"
-        android:src="@drawable/main_background"
-        android:translationY="-249.5dp"
-        android:rotation="180"
-        android:alpha="0.2">
-    </ImageView>
-
+    <!-- Top FrameLayout Section -->
     <FrameLayout
         android:id="@+id/frame1"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="#FF9800">
 
-        <!-- RelativeLayout untuk mengatur tata letak -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:padding="30dp">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-
-            <!-- TextView di dalam RelativeLayout -->
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="What's the recipe for today?"
-                android:textColor="@color/white"
-                android:textSize="23sp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:translationY="45px" />
-
-            <!-- Button di bawah TextView di dalam RelativeLayout -->
-
-            <!-- EditText di dalam RelativeLayout -->
+                android:translationY="35dp" />
 
             <EditText
-                android:drawablePadding="8dp"
-                android:padding="10dp"
-                android:background="@drawable/custom_edittext"
                 android:id="@+id/edUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/textView2"
+                android:background="@drawable/custom_edittext"
                 android:drawableRight="@drawable/ic_search"
+                android:drawablePadding="8dp"
+                android:padding="12dp"
                 android:hint="Search"
-                android:translationY="65dp"
-                />
+                android:translationY="100px"/>
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:id="@+id/profile_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/profile_icon"
-                android:translationX="320dp"
-                android:translationY="2dp"
-                >
-
-            </ImageView>
+                android:contentDescription="Profile Icon"
+                android:translationY="-90px"/>
         </RelativeLayout>
+
     </FrameLayout>
+
+    <!-- Content Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:text="Recomend Menu"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:translationY="315dp"
+        android:translationX="15dp"/>
+    <!-- Bottom Navigation Section -->
+
     <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:padding="30dp"
-        android:backgroundTint="#FD9700"
-        android:translationY="200dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/frame1"
+        android:layout_marginTop="-1dp"
+        android:elevation="1dp"
+        android:padding="16dp">
+
+        <!-- Placeholder for content -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:translationY="150dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Card Item 1 -->
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/card_menu_backround"
+                    android:elevation="4dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <!-- Image -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/salad_image"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Gambar Salad"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Salad"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Button -->
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cek Resep"
+                        android:backgroundTint="#FF9800"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal" />
+
+                </LinearLayout>
+
+                <!-- Card Item 2 -->
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/card_menu_backround"
+                    android:elevation="4dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <!-- Image -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:src="@drawable/launch_image"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Gambar Launch"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Launch"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Button -->
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cek Resep"
+                        android:backgroundTint="#FF9800"
+                        android:textColor="@android:color/white"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <!-- Tambahkan lebih banyak Card Item jika diperlukan -->
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/holo_orange_dark"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/buttom_menu"
         />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:translationY="415px"
+        android:elevation="2dp">
+
+        <!-- Circle for Breakfast -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:gravity="center">
+
+            <!-- Circle Shape -->
+
+            <!-- Label -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/breakfest_image"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape_green"
+                android:contentDescription="Breakfast Image"
+                android:padding="13dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Breakfast"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Circle for Launch -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:gravity="center">
+
+            <!-- Circle Shape -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/dinner_image"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape_yellow"
+                android:contentDescription="Breakfast Image"
+                android:padding="20dp"/>
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Launch"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Circle for Dinner -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:gravity="center">
+
+            <!-- Circle Shape -->
+
+            <!-- Label -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/launch_image"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_shape_blue"
+                android:contentDescription="Breakfast Image"
+                android:padding="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Dinner"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    </LinearLayout>
+
+        <!-- Header -->
+
+        <!-- Horizontal ScrollView for Cards -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <!-- Card Item -->
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+
+
+
 </RelativeLayout>
-
-
 
