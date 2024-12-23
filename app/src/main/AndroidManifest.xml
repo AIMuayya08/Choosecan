@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Choosecan">
         <activity
-            android:name=".StartActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
-        <!-- LoginActivity: Aktivitas pertama -->
+        <activity
+            android:name=".StartActivity"
+            android:exported="false" /> <!-- LoginActivity: Aktivitas pertama -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
