@@ -23,6 +23,7 @@ import java.util.Random;
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;
     private Button loginButton;
+    private TextView registerTextView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,18 +35,27 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.gasken_button);
+        registerTextView = findViewById(R.id.register_button);
 
         // Listener untuk tombol login
         loginButton.setOnClickListener(v -> {
-            // Menampilkan pesan masuk sukses
-            Toast.makeText(LoginActivity.this, "Login berhasil!", Toast.LENGTH_SHORT).show();
+            String username = usernameEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
 
-            // Beralih ke StartActivity
-            Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(LoginActivity.this, "Username atau password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "Login berhasil!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        // Listener untuk teks "Daftar"
+        registerTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
-
-            // Tutup LoginActivity agar tidak bisa kembali ke layar login
-            finish();
         });
     }
 }
