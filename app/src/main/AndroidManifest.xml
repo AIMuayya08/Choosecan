@@ -4,35 +4,24 @@
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Choosecan"
-        tools:targetApi="31">
-
-        <!-- Default activity -->
+        android:theme="@style/Theme.Choosecan">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".StartActivity"
+            android:exported="false" />
+        <!-- LoginActivity: Aktivitas pertama -->
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Other activities -->
-        <activity
-            android:name=".food.salad"
-            android:exported="false" />
-        <activity
-            android:name=".DisimpanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
