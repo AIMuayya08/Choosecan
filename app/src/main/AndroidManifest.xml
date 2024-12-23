@@ -33,6 +33,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-    </application>
+
+       </application>
 
 </manifest>
