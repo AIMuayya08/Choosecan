@@ -69,16 +69,15 @@
         android:textColor="#000000"
         android:inputType="textPassword" />
 
-    <TextView
+    <Button
         android:id="@+id/TextView"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edit_radius"
         android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="DAFTAR"
-        android:textColor ="@android:color/white"
         android:gravity="center"
+        android:text="DAFTAR"
+        android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <TextView
