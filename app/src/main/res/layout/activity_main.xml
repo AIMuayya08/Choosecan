@@ -80,7 +80,7 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:translationY="315dp"
+        android:translationY="290dp"
         android:translationX="15dp"/>
     <!-- Bottom Navigation Section -->
 
@@ -104,12 +104,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:translationY="-80dp">
 
                 <!-- Card Item 1 -->
                 <LinearLayout
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="300dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/card_menu_backround"
                     android:elevation="4dp"
@@ -196,24 +197,13 @@
 
     </FrameLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_orange_dark"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/buttom_menu"
-        />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="10dp"
-        android:translationY="415px"
+        android:translationY="415dp"
         android:elevation="2dp">
 
         <!-- Circle for Breakfast -->
@@ -306,15 +296,8 @@
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
 
-    </LinearLayout>
 
-        <!-- Header -->
 
         <!-- Horizontal ScrollView for Cards -->
         <HorizontalScrollView
@@ -322,17 +305,17 @@
             android:layout_height="wrap_content"
             android:scrollbars="none">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <!-- Card Item -->
-
-            </LinearLayout>
         </HorizontalScrollView>
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/holo_orange_dark"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/buttom_menu"
+            />
 
 
 

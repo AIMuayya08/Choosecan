@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/list"
         android:title="List"
         android:icon="@drawable/ic_list"/>
 
     <item
-        android:id="@+id/shorts"
+        android:id="@+id/filter"
         android:title="Filters"
         android:icon="@drawable/ic_filter"/>
 
 
     <item
-        android:id="@+id/library"
+        android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/subscriptions"
+        android:id="@+id/Bookmark"
         android:title="Bookmark"
         android:icon="@drawable/ic_bookmark"/>
 
