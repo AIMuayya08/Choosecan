@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,44 +20,38 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    private EditText usernameEditText, passwordEditText;
-    private Button loginButton;
-    private TextView registerTextView;
+    private EditText usernameEditText, passwordEditText, confirmPasswordEditText;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
-        // Inisialisasi View
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
-        loginButton = findViewById(R.id.gasken_button);
-        registerTextView = findViewById(R.id.register_button);
+        confirmPasswordEditText = findViewById(R.id.confirm_password);
+        registerButton = findViewById(R.id.register_button);
 
-        // Listener tombol login
-        loginButton.setOnClickListener(v -> {
+        registerButton.setOnClickListener(v -> {
             String username = usernameEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
+            String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(LoginActivity.this, "Username atau password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
+            if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(RegisterActivity.this, "Semua kolom harus diisi!", Toast.LENGTH_SHORT).show();
+            } else if (!password.equals(confirmPassword)) {
+                Toast.makeText(RegisterActivity.this, "Password tidak cocok!", Toast.LENGTH_SHORT).show();
             } else {
-                loginUser(username, password);
+                registerUser(username, password);
             }
-        });
-
-        // Listener untuk navigasi ke halaman registrasi
-        registerTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
         });
     }
 
-    private void loginUser(String username, String password) {
-        String url = "http://YOUR_SERVER_URL/ChoosecanAPI.php?action=login"; // Ganti dengan URL API Anda
+    private void registerUser(String username, String password) {
+        String url = "http://YOUR_SERVER_URL/ChoosecanAPI.php?action=register"; // Ganti dengan URL API Anda
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -70,21 +63,21 @@ public class LoginActivity extends AppCompatActivity {
                         String message = jsonObject.getString("message");
 
                         if (success) {
-                            Toast.makeText(LoginActivity.this, "Login berhasil!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, StartActivity.class); // Ganti dengan halaman utama
+                            Toast.makeText(RegisterActivity.this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(LoginActivity.this, "Error parsing JSON: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("LoginActivity", "JSON Error: ", e);
+                        Toast.makeText(RegisterActivity.this, "Error parsing JSON: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("RegisterActivity", "JSON Error: ", e);
                     }
                 },
                 error -> {
-                    Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("LoginActivity", "Volley Error: ", error);
+                    Toast.makeText(RegisterActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("RegisterActivity", "Volley Error: ", error);
                 }) {
             @Override
             protected Map<String, String> getParams() {
