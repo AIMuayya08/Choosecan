@@ -203,7 +203,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="10dp"
-        android:translationY="415dp"
+        android:translationY="150dp"
         android:elevation="2dp">
 
         <!-- Circle for Breakfast -->
